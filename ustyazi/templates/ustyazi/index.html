@@ -1,0 +1,17 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+        <h1>ÜSTYAZI index page</h1>
+        <p class="lead">Use this document.</p>
+        
+        
+        <h2>Üstyazilar</h2>
+        <ul>
+        {% for ustyazi in object_list %}
+            <li>{{ ustyazi }}</li>
+        {% endfor %}
+        </ul>
+        
+        
+      
+{% endblock %}

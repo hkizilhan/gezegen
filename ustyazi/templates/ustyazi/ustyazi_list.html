@@ -1,0 +1,37 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+                
+{% include 'ustyazi/buttons.html' %}
+
+        
+<h2>Üstyazilar</h2>
+       
+        
+        
+<table class="table table-striped table-hover custab">
+    <thead>
+        <tr>
+            <th class="text-center">Dosya No</th>
+            <th class="text-center">Tarih</th>
+            <th class="text-center">Konu</th>
+            <th class="text-center">İşlem</th>
+        </tr>
+    </thead>
+            {% for ustyazi in object_list %}
+            <tr>
+                <td>{{ ustyazi.dosya_no }}</td>
+                <td>{{ ustyazi.tarih    }}</td>
+                <td>{{ ustyazi.konu     }}</td>
+                <td class="text-center">
+                    <a href="{% url 'ustyazi-render'   pk=ustyazi.pk %}" class="btn btn-info btn-xs">   <span class="glyphicon glyphicon-edit">  </span> Yazdır</a> 
+                    <a href="{% url 'ustyazi-guncelle' pk=ustyazi.pk %}" class="btn btn-info btn-xs">   <span class="glyphicon glyphicon-edit">  </span> Güncelle</a> 
+                    <a href="{% url 'ustyazi-sil'      pk=ustyazi.pk %}" class="btn btn-danger btn-xs"> <span class="glyphicon glyphicon-remove"></span> Sil</a>
+                </td>
+            </tr>
+            {% endfor %}
+            
+    </table>
+        
+      
+{% endblock %}

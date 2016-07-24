@@ -1,0 +1,18 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+                
+<form action="" method="post">{% csrf_token %}
+    <p>Bu Kayıt Silinecek :  "{{ object }}"?</p>
+     
+        <button type="submit" class="btn btn-danger">
+            SİL
+        </button>
+    
+    <a href="{% url 'ustyazi-liste' %}" class="btn btn-info">   
+        <span class="glyphicon glyphicon-edit">  </span> İptal</a> 
+    
+</form>
+
+
+{% endblock %}

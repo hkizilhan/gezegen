@@ -1,0 +1,17 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+                
+{% include 'ustyazi/buttons.html' %}
+
+
+<form action="" method="post" class="form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">
+     Kaydet
+    </button>
+    
+</form>
+        
+{% endblock %}
