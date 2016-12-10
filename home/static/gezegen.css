@@ -1,0 +1,10 @@
+form.form p label {
+    width: 10%;
+
+}
+
+
+form.form p textarea {
+    width: 450px;
+    height: 100px;
+}

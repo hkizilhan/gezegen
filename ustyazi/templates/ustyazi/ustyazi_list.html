@@ -24,9 +24,9 @@
                 <td>{{ ustyazi.tarih    }}</td>
                 <td>{{ ustyazi.konu     }}</td>
                 <td class="text-center">
-                    <a href="{% url 'ustyazi-render'   pk=ustyazi.pk %}" class="btn btn-info btn-xs">   <span class="glyphicon glyphicon-edit">  </span> Yazdır</a> 
-                    <a href="{% url 'ustyazi-guncelle' pk=ustyazi.pk %}" class="btn btn-info btn-xs">   <span class="glyphicon glyphicon-edit">  </span> Güncelle</a> 
-                    <a href="{% url 'ustyazi-sil'      pk=ustyazi.pk %}" class="btn btn-danger btn-xs"> <span class="glyphicon glyphicon-remove"></span> Sil</a>
+                    <a href="{% url 'ustyazi-render'   pk=ustyazi.pk %}" class="btn btn-info btn-xs">   <span class="glyphicon glyphicon-print"> </span> Yazdır</a>   &ensp;
+                    <a href="{% url 'ustyazi-guncelle' pk=ustyazi.pk %}" class="btn btn-info btn-xs">   <span class="glyphicon glyphicon-edit">  </span> Güncelle</a> &ensp;
+                    <a href="{% url 'ustyazi-sil'      pk=ustyazi.pk %}" class="btn btn-danger btn-xs"> <span class="glyphicon glyphicon-remove"></span> Sil</a>      <span style="margin: 5px"></span>
                 </td>
             </tr>
             {% endfor %}
