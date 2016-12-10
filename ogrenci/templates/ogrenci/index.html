@@ -1,0 +1,25 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+        <h1>ÖĞRENCİ index page</h1>
+        <p class="lead">Use this document.</p>
+        
+        
+        <h2>Öğrenci</h2>
+        
+        <a href="{% url 'liste-guncelle' %}" class="btn btn-primary" role="button">Öğrencileri Güncelle</a>
+        
+        <a href="{% url 'ogrenci-yeni' %}" class="btn btn-primary" role="button">Yeni Öğrenci</a>
+        <a href="{% url 'tum-ogrenciler' %}" class="btn btn-primary" role="button">Tüm Öğrenciler</a>
+        
+        
+        
+        <ul>
+        {% for ogrenci in object_list %}
+            <li>{{ ogrenci }}</li>
+        {% endfor %}
+        </ul>
+        
+        
+      
+{% endblock %}

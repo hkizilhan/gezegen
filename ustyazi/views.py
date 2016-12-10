@@ -5,6 +5,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
+from django import forms
 
 from secretary import Renderer
 
@@ -20,16 +21,26 @@ class Ustyazi_List(ListView):
     model = Ustyazi
     
 
+class Ustyazi_Create_Form(forms.ModelForm):
+    class Meta:
+        model = Ustyazi
+        fields = ['dosya_no', 'sayi_no', 'tarih', 'konu', 'nereye', 'ilgi', 'yazi', 'ek']
+        widgets = {
+            'yazi': forms.Textarea()
+        }
+
 class Ustyazi_Create(SuccessMessageMixin, CreateView):
     model = Ustyazi
-    fields = ['dosya_no', 'sayi_no', 'tarih', 'konu', 'nereye', 'ilgi', 'yazi', 'ek']
+    form_class = Ustyazi_Create_Form
+    #fields = ['dosya_no', 'sayi_no', 'tarih', 'konu', 'nereye', 'ilgi', 'yazi', 'ek']
     success_url = reverse_lazy('ustyazi-liste')
     success_message = 'Başarıyla kaydedildi...'
     
     
 class Ustyazi_Update(SuccessMessageMixin, UpdateView):
     model = Ustyazi
-    fields = ['dosya_no', 'sayi_no', 'tarih', 'konu', 'nereye', 'ilgi', 'yazi', 'ek']
+    form_class = Ustyazi_Create_Form
+    #fields = ['dosya_no', 'sayi_no', 'tarih', 'konu', 'nereye', 'ilgi', 'yazi', 'ek']
     success_url = reverse_lazy('ustyazi-liste')
     success_message = 'Başarıyla kaydedildi...'
 

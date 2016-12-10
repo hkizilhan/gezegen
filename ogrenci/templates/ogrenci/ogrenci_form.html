@@ -2,8 +2,6 @@
 
 {% block content %}
                 
-{% include 'ustyazi/buttons.html' %}
-
 
 <form action="" method="post" class="form">
     {% csrf_token %}
@@ -13,14 +11,5 @@
     </button>
     
 </form>
-<script>
- $("#id_tarih").datepicker({
-    format: "dd/mm/yyyy",
-    todayBtn: true,
-    language: "tr",
-    autoclose: true,
-    todayHighlight: true
-     });
-</script>
 
 {% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+                
+
+        
+<h2>Öğrenciler</h2>
+       
+        
+<table class="table table-striped table-hover custab">
+    <thead>
+        <tr>
+            <th class="text-center">No</th>
+            <th class="text-center">Sınıf</th>
+            <th class="text-center">Ad Soyad</th>
+            <th class="text-center">Cinsiyet</th>
+            <th class="text-center">İşlem</th>
+            
+        </tr>
+    </thead>
+            {% for ogrenci in object_list %}
+            <tr>
+                <td>{{ ogrenci.no }}</td>
+                <td>{{ ogrenci.sinif    }}</td>
+                <td>{{ ogrenci.ad }} {{ ogrenci.soyad }}</td>
+                <td>{{ ogrenci.cinsiyet    }}</td>
+                <td class="text-center">
+                    
+                    <a href="{% url 'ogrenci-guncelle' pk=ogrenci.pk %}" class="btn btn-info btn-xs">   <span class="glyphicon glyphicon-edit">  </span> Güncelle</a> &ensp;
+                    <a href="{% url 'ogrenci-sil'      pk=ogrenci.pk %}" class="btn btn-danger btn-xs"> <span class="glyphicon glyphicon-remove"></span> Sil</a>      <span style="margin: 5px"></span>
+                    
+                </td>
+            </tr>
+            {% endfor %}
+            
+    </table>
+        
+      
+{% endblock %}
