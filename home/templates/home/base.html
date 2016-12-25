@@ -12,6 +12,7 @@
 
     <title>Gezegen</title>
 
+    <link rel="stylesheet" href="/static/w3.css">
     <link rel="stylesheet" href="/static/gezegen.css">
     
     <!-- Latest compiled and minified JavaScript -->
@@ -77,6 +78,27 @@
             </button>
         </div>
     {% endfor %}
+    
+    {% for message in messages %}
+        <div class="w3-panel w3-card  
+        {% if message.tags == 'error' %}
+            w3-red
+        {% elif message.tags == 'warning' %}
+            w3-orange
+        {% elif message.tags == 'success' %}
+            w3-green
+        {% elif message.tags == 'info' %}
+            w3-blue
+        {% elif message.tags == 'debug' %}
+            w3-lightgray
+        {% endif %}">
+            <span onclick="this.parentElement.style.display='none'" class="w3-closebtn">&times;</span>
+            <h3>{{ message }}</h3>
+        </div>
+        
+    {% endfor %}
+    
+    
     
     {% block content %}
             

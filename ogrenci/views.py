@@ -17,6 +17,10 @@ import xlrd
 from . models import Ogrenci
 
 
+def get_siniflar():
+    return list( Ogrenci.objects.order_by().values_list('sinif', flat=True).distinct() )
+
+
 class ListeForm(forms.Form):
     file1 = forms.FileField(label='Öğrencl Listesi') # , help_text='Öğrencl Listesi')
     file2 = forms.FileField(label='Şube Sayıları')   # , help_text='Şube Sayıları')
@@ -47,6 +51,13 @@ class Ogrenci_Create(SuccessMessageMixin, CreateView):
     
     success_url = reverse_lazy('tum-ogrenciler')
     success_message = 'Başarıyla kaydedildi...'
+    
+    def get_context_data(self, **kwargs):
+        context = super(Ogrenci_Create, self).get_context_data(**kwargs)
+        
+        context['siniflar'] = get_siniflar()
+        return context
+    
     
 
 class Ogrenci_Update(SuccessMessageMixin, UpdateView):
