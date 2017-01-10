@@ -7,6 +7,11 @@ from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django import forms
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin
+# permission_required = ('polls.can_open', 'polls.can_edit')
+
+
 from secretary import Renderer
 
 from .models import Ustyazi
@@ -17,8 +22,9 @@ def index(request):
     return render(request, 'ustyazi/index.html', context)
 
 
-class Ustyazi_List(ListView):
+class Ustyazi_List(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     model = Ustyazi
+    permission_required = 'ustyazi.görüntüle_ustyazi'
     
 
 class Ustyazi_Create_Form(forms.ModelForm):

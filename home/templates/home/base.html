@@ -15,20 +15,6 @@
     <link rel="stylesheet" href="/static/jquery-ui.min.css">
     <script src="/static/jquery-ui.min.js"></script>
 
-    
-    <!-- Bootstrap core CSS -->
-    <!-- Latest compiled and minified CSS 
-    <link rel="stylesheet" href="/static/bootstrap-3.3.7/css/bootstrap.min.css">
-    -->
-
-    <!-- Optional theme 
-    <link rel="stylesheet" href="/static/bootstrap-3.3.7/css/bootstrap-theme.min.css">
-    -->
-
-    <!-- Latest compiled and minified JavaScript 
-    <script src="/static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    -->
-    
     <!-- bootstrap-datetimepicker 
     <link href="/static/bootstrap-datetimepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
     <script src="/static/bootstrap-datetimepicker/js/bootstrap-datepicker.min.js" charset="UTF-8"></script>
@@ -49,7 +35,10 @@
         
             <li> <a href="/ustyazi">Üstyazi</a>  </li>
             <li> <a href="/ogrenci">Öğrenci</a>  </li>
-            <li class="w3-right"> <a href="#contact">Contact</a>  </li>
+            
+            {% if request.user.is_authenticated %}
+            <li class="w3-right"> <a href="/cikis">{{ user.username }}: Oturumu Kapat</a>  </li>
+            {% endif %}
     </ul> 
 
     

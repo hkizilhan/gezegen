@@ -14,3 +14,6 @@ class Ustyazi(models.Model):
     
     def __str__(self):
         return '{} - {}'.format(self.sayi_no, self.konu)
+        
+    class Meta:
+        default_permissions = ('ekle', 'güncelle', 'sil', 'görüntüle')
