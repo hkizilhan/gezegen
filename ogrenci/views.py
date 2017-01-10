@@ -6,7 +6,6 @@ from django.contrib.messages.views import SuccessMessageMixin
 
 from django.core.urlresolvers import reverse_lazy
 
-
 from django.contrib import messages
 from django import forms
 from django.db import transaction
@@ -15,6 +14,10 @@ import xlrd
 # Create your views here.
 
 from . models import Ogrenci
+
+
+def get_siniflar():
+    return list( Ogrenci.objects.order_by('sinif').values_list('sinif', flat=True).distinct() )
 
 
 class ListeForm(forms.Form):
@@ -38,6 +41,7 @@ class Ogrenci_index(View):
 
 class Ogrenci_List(ListView):
     model = Ogrenci
+    
 
 
 class Ogrenci_Create(SuccessMessageMixin, CreateView):
@@ -48,12 +52,25 @@ class Ogrenci_Create(SuccessMessageMixin, CreateView):
     success_url = reverse_lazy('tum-ogrenciler')
     success_message = 'Başarıyla kaydedildi...'
     
+    def get_context_data(self, **kwargs):
+        context = super(Ogrenci_Create, self).get_context_data(**kwargs)
+        
+        context['siniflar'] = get_siniflar()
+        return context
+    
+    
 
 class Ogrenci_Update(SuccessMessageMixin, UpdateView):
     model = Ogrenci
     fields = ['no', 'sinif', 'ad', 'soyad', 'cinsiyet']
     success_url = reverse_lazy('tum-ogrenciler')
     success_message = 'Başarıyla kaydedildi...'
+    
+    def get_context_data(self, **kwargs):
+        context = super(Ogrenci_Update, self).get_context_data(**kwargs)
+        
+        context['siniflar'] = get_siniflar()
+        return context
 
 
 class Ogrenci_Delete(DeleteView):

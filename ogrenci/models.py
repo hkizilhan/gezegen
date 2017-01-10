@@ -15,3 +15,6 @@ class Ogrenci(models.Model):
     
     def __str__(self):
         return '{} - {}'.format(self.no, self.ad + " " + self.soyad)
+        
+    class Meta:
+        ordering = ['sinif', 'no']

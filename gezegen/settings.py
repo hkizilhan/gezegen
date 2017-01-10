@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     
     'home',
     'ogrenci',
-    'ustyazi'
+    'ustyazi',
+    'ogretmen'
     
 ]
 

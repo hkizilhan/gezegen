@@ -6,10 +6,36 @@
 <form action="" method="post" class="form">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">
+    <button type="submit" class="w3-btn w3-blue">
      Kaydet
     </button>
     
 </form>
+
+
+  <style>
+  .ui-autocomplete {
+    max-height: 300px;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+  }
+
+  </style>
+
+  <script>
+  $( function() {
+    var siniflar = {{ siniflar |safe }};
+    $( "#id_sinif" ).autocomplete({
+      source: siniflar,
+      minLength: 0,
+      open: function() { 
+        $('#id_sinif').autocomplete("widget").width(400) }
+    }).focus(function () {
+      $(this).autocomplete('search', '');
+    });
+  } );
+  </script>
+
+
 
 {% endblock %}

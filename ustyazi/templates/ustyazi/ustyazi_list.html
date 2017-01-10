@@ -2,20 +2,18 @@
 
 {% block content %}
                 
-{% include 'ustyazi/buttons.html' %}
-
         
 <h2>Üstyazilar</h2>
        
         
         
-<table class="table table-striped table-hover custab">
+<table class="w3-table-all w3-hoverable">
     <thead>
         <tr>
-            <th class="text-center">Dosya No</th>
-            <th class="text-center">Tarih</th>
-            <th class="text-center">Konu</th>
-            <th class="text-center">İşlem</th>
+            <th class="">Dosya No</th>
+            <th class="">Tarih</th>
+            <th class="">Konu</th>
+            <th class="">İşlem</th>
         </tr>
     </thead>
             {% for ustyazi in object_list %}
@@ -23,10 +21,10 @@
                 <td>{{ ustyazi.dosya_no }}</td>
                 <td>{{ ustyazi.tarih    }}</td>
                 <td>{{ ustyazi.konu     }}</td>
-                <td class="text-center">
-                    <a href="{% url 'ustyazi-render'   pk=ustyazi.pk %}" class="btn btn-info btn-xs">   <span class="glyphicon glyphicon-print"> </span> Yazdır</a>   &ensp;
-                    <a href="{% url 'ustyazi-guncelle' pk=ustyazi.pk %}" class="btn btn-info btn-xs">   <span class="glyphicon glyphicon-edit">  </span> Güncelle</a> &ensp;
-                    <a href="{% url 'ustyazi-sil'      pk=ustyazi.pk %}" class="btn btn-danger btn-xs"> <span class="glyphicon glyphicon-remove"></span> Sil</a>      <span style="margin: 5px"></span>
+                <td class="">
+                    <a href="{% url 'ustyazi-render'   pk=ustyazi.pk %}" class="w3-btn w3-purple w3-small"> Yazdır  </a> &ensp;
+                    <a href="{% url 'ustyazi-guncelle' pk=ustyazi.pk %}" class="w3-btn w3-orange w3-small"> Güncelle</a> &ensp;
+                    <a href="{% url 'ustyazi-sil'      pk=ustyazi.pk %}" class="w3-btn w3-red    w3-small"> Sil     </a>
                 </td>
             </tr>
             {% endfor %}
