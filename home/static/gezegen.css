@@ -1,5 +1,6 @@
 form.form p label {
-    width: 10%;
+    width: 110px;
+    display: inline-block;
 
 }
 

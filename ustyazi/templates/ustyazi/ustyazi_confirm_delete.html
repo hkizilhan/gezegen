@@ -5,13 +5,13 @@
 <form action="" method="post">{% csrf_token %}
     <p>Bu Kayıt Silinecek :  "{{ object }}"?</p>
      
-        <button type="submit" class="btn btn-danger">
-            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        <button type="submit" class="w3-btn w3-red w3-small">
             SİL
         </button>
     &ensp;
-    <a href="{% url 'ustyazi-liste' %}" class="btn btn-info">   
-        <span class="glyphicon glyphicon-chevron-left">  </span> İptal</a> 
+    <a href="{% url 'ustyazi-liste' %}" class="w3-btn w3-green w3-small">   
+        İptal
+    </a> 
     
 </form>
 
