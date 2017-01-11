@@ -35,24 +35,27 @@ class Ustyazi_Create_Form(forms.ModelForm):
             'yazi': forms.Textarea()
         }
 
-class Ustyazi_Create(SuccessMessageMixin, CreateView):
+class Ustyazi_Create(LoginRequiredMixin, PermissionRequiredMixin, SuccessMessageMixin, CreateView):
     model = Ustyazi
+    permission_required = 'ustyazi.ekle_ustyazi'
     form_class = Ustyazi_Create_Form
     #fields = ['dosya_no', 'sayi_no', 'tarih', 'konu', 'nereye', 'ilgi', 'yazi', 'ek']
     success_url = reverse_lazy('ustyazi-liste')
     success_message = 'Başarıyla kaydedildi...'
     
     
-class Ustyazi_Update(SuccessMessageMixin, UpdateView):
+class Ustyazi_Update(LoginRequiredMixin, PermissionRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Ustyazi
+    permission_required = 'ustyazi.güncelle_ustyazi'
     form_class = Ustyazi_Create_Form
     #fields = ['dosya_no', 'sayi_no', 'tarih', 'konu', 'nereye', 'ilgi', 'yazi', 'ek']
     success_url = reverse_lazy('ustyazi-liste')
     success_message = 'Başarıyla kaydedildi...'
 
 
-class Ustyazi_Delete(DeleteView):
+class Ustyazi_Delete(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Ustyazi
+    permission_required = 'ustyazi.sil_ustyazi'
     success_url = reverse_lazy('ustyazi-liste')
     success_message = 'Üstyazı Silindi.'
     
