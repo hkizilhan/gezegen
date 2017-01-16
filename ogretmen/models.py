@@ -20,6 +20,7 @@ class Brans(models.Model):
 
 class Ogretmen(models.Model):
     
+    # ISTIHDAM
     KADROLU    = 'KADROLU'
     SOZLESMELI = 'SOZLESMELI'
     UCRETLI    = 'UCRETLI'
@@ -30,6 +31,22 @@ class Ogretmen(models.Model):
         (UCRETLI,    'Ücretli'),
     )
     
+    # UNVAN
+    MUDUR       = 'MÜDÜR'
+    MDR_BAS_YRD = 'MÜDÜR BAŞ YARDIMCISI'
+    MDR_YRD     = 'MÜDÜR YARDIMCISI'
+    ALAN_SEFI   = 'ALAN ŞEFİ'
+    OGRETMEN    = 'ÖĞRETMEN'
+    
+    UNVAN_CHOICES = (
+        (MUDUR,       'Okul Müdürü'),
+        (MDR_BAS_YRD, 'Müdür Baş Yardımcısı'),
+        (MDR_YRD,     'Müdür Yardımcısı'),
+        (ALAN_SEFI,   'Alan Şefi'),
+        (OGRETMEN,    'Öğretmen'),
+    )
+    
+    
     ad       = models.CharField(max_length=50)
     soyad    = models.CharField(max_length=50)
     brans    = models.ForeignKey(Brans, on_delete=models.PROTECT)
@@ -38,6 +55,11 @@ class Ogretmen(models.Model):
         max_length=20,
         choices=OGRETMEN_ISTIHDAM_CHOICES,
         default=KADROLU,
+    )
+    unvan    = models.CharField(
+        max_length=50,
+        choices=UNVAN_CHOICES,
+        default=OGRETMEN,
     )
     telefon  = models.CharField(max_length=50, blank=True)
     eposta   = models.CharField(max_length=50, blank=True)

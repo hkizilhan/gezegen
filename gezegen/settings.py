@@ -39,9 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'home',
+    'ayarlar',
     'ogrenci',
     'ustyazi',
-    'ogretmen'
+    'ogretmen',
+    'kurulkomisyon.apps.KurulKomisyonConfig',
     
 ]
 

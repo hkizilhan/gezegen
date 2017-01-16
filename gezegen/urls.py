@@ -24,9 +24,12 @@ from home.views import index
 urlpatterns = [
     url(r'^$', index, name='home'),
     
+    url(r'^ayarlar/', include('ayarlar.urls')),
     url(r'^ustyazi/', include('ustyazi.ustyazi_urls')),
     url(r'^ogrenci/', include('ogrenci.ogrenci_urls')),
     url(r'^ogretmen/', include('ogretmen.urls')),
+    url(r'^kurulkomisyon/', include('kurulkomisyon.urls')),
+    
     
     
     url(r'^admin/', admin.site.urls),

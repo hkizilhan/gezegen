@@ -1,0 +1,41 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+                
+
+<div class="w3-row-padding">
+  <div class="w3-col l2">
+    
+    <h2>Menü</h2>
+    
+    <ul class="w3-ul w3-card-4 w3-margin-top w3-hoverable">
+      <li><a style="display: block;" href="{% url 'ustyazi-yeni' %}">Yeni</a></li>
+      <li><a style="display: block;" href="{% url 'ustyazi-liste' %}">Listele</a></li>
+    </ul>
+  
+  
+  </div>
+  
+  
+  
+  
+  <div class="w3-col l10">
+  
+  <h2>Genel Ayarlar</h2>
+       
+  <form action="" method="post" class="form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="w3-btn w3-blue">
+     Kaydet
+    </button>
+    
+</form>      
+        
+
+  </div>
+  
+</div>
+
+   
+{% endblock %}
